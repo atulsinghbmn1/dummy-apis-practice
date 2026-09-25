@@ -4,8 +4,8 @@ info:
   title: pharma-st-salesforce-proxy
   version: "1.0.2"
 servers:
-  - url: https://mmsst-salesforce-qa.dev.aks.west.us.mckesson.com
-    description: QA2 implementation host (from deploy-qa.yml)
+  - url: https://test.api.com
+    description: QA2 implementation host (from qa.yml)
 paths:
   /pharma-st-salesforce-proxy:
     get:
