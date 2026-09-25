@@ -1,0 +1,53 @@
+openapi: 3.0.0
+info:
+  description: This is a Mule app pharma-st-salesforce-proxy proxy api
+  title: pharma-st-salesforce-proxy
+  version: "1.0.2"
+servers:
+  - url: https://mmsst-salesforce-qa.dev.aks.west.us.mckesson.com
+    description: QA2 implementation host (from deploy-qa.yml)
+paths:
+  /pharma-st-salesforce-proxy:
+    get:
+      operationId: GET_pharma-st-salesforce-proxy
+      parameters:
+        - $ref: '#/components/parameters/trait_client-id-required_client_id'
+        - $ref: '#/components/parameters/trait_client-id-required_client_secret'
+        - in: query
+          name: name
+          required: false
+          schema:
+            type: string
+            example: John
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - success
+                  - message
+                properties:
+                  message:
+                    type: string
+                  success:
+                    type: boolean
+                example:
+                  message: "pharma-st-salesforce-proxy!"
+                  success: true
+components:
+  parameters:
+    trait_client-id-required_client_id:
+      in: header
+      name: client_id
+      required: true
+      schema:
+        type: string
+    trait_client-id-required_client_secret:
+      in: header
+      name: client_secret
+      required: true
+      schema:
+        type: string
